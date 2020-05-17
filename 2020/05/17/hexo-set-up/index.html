@@ -5,20 +5,20 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="https://co2.github.com">
-  <title>hexo set up | Co2</title>
+  <link rel="dns-prefetch" href="https://co2.github.io">
+  <title>Hexo set up | Co2</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="曾梦想仗剑走天涯,后来工作忙没去.">
+  <meta name="description" content="Hexo使用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo set up">
-<meta property="og:url" content="https://co2.github.com/2020/05/17/hexo-set-up/index.html">
+<meta property="og:title" content="Hexo set up">
+<meta property="og:url" content="https://co2.github.io/2020/05/17/hexo-set-up/index.html">
 <meta property="og:site_name" content="Co2">
-<meta property="og:description" content="曾梦想仗剑走天涯,后来工作忙没去.">
+<meta property="og:description" content="Hexo使用">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-17T12:00:36.000Z">
-<meta property="article:modified_time" content="2020-05-17T15:58:46.403Z">
+<meta property="article:modified_time" content="2020-05-17T16:51:17.730Z">
 <meta property="article:author" content="二氧化碳">
-<meta property="article:tag" content="d">
+<meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Co2" type="application/atom+xml">
@@ -48,7 +48,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="/img/co2.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">二氧化碳</a></h1>
@@ -62,9 +62,9 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/categories">安全</a></li>
+				<li><a href="/categories/">安全</a></li>
 	        
-				<li><a href="/suibi">随笔</a></li>
+				<li><a href="/suibi/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -104,7 +104,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="/img/co2.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">二氧化碳</h1>
@@ -136,9 +136,9 @@
 				
 					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/categories">安全</a></li>
+					<li style="width: 33.333333333333336%"><a href="/categories/">安全</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/suibi">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/suibi/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -160,7 +160,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      hexo set up
+      Hexo set up
     </h1>
   
 
@@ -173,30 +173,55 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
-      
+        <h2 id="Hexo使用"><a href="#Hexo使用" class="headerlink" title="Hexo使用"></a>Hexo使用</h2><a id="more"></a>
+
+<h3 id="hexo-命令"><a href="#hexo-命令" class="headerlink" title="hexo 命令"></a>hexo 命令</h3><hr>
+<pre><code>hexo generage == hexo g 生成网站
+hexo server == hexo s 运行网站
+hexo deploy == hexo d 提交修改
+hexo new page &quot;文章名字&quot; 默认生成在source目录
+hexo new page --path suibi/markdown &quot;文章名字&quot; 生成在随笔目录下</code></pre><hr>
+<h3 id="hexo-结构"><a href="#hexo-结构" class="headerlink" title="hexo 结构"></a>hexo 结构</h3><table>
+<thead>
+<tr>
+<th>文件名</th>
+<th align="right">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>node_moudule</td>
+<td align="right">nodejs模块,不用关注</td>
+</tr>
+<tr>
+<td>public</td>
+<td align="right">generage 自动生成,不用关注</td>
+</tr>
+<tr>
+<td>scaffold</td>
+<td align="right">草稿</td>
+</tr>
+<tr>
+<td>source</td>
+<td align="right">文章</td>
+</tr>
+<tr>
+<td>themes</td>
+<td align="right">主题</td>
+</tr>
+<tr>
+<td>_config.yaml</td>
+<td align="right">根配置文件</td>
+</tr>
+<tr>
+<td>db.json</td>
+<td align="right">自动生成数据</td>
+</tr>
+</tbody></table>
+<h3 id="hexo-配置"><a href="#hexo-配置" class="headerlink" title="hexo 配置"></a>hexo 配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#根目录下_config.yaml</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:DistanceBlog&#x2F;co2.github.io</span><br><span class="line">  branch: master</span><br><span class="line">#图片配置 主题目录下</span><br><span class="line">  avatar: &#x2F;img&#x2F;co2.jpg  #注: 文件路径在主题source&#x2F;img下</span><br><span class="line">#文章展示长度配置</span><br><span class="line">  excerpt_link: more   #在每个md下配置&lt;!--more--&gt;会被截断,截断文字</span><br></pre></td></tr></table></figure>
+<h3 id="hexo-插件"><a href="#hexo-插件" class="headerlink" title="hexo 插件"></a>hexo 插件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;your git name&quot;</span><br><span class="line">git config --global user.email &quot;your git email&quot;</span><br><span class="line">git 推送安装插件</span><br><span class="line">  npm install hexo-deployer-git --save</span><br><span class="line">  hexo d</span><br></pre></td></tr></table></figure>
 
       
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
+
       
     </div>
     <div class="article-info article-info-index">
@@ -207,7 +232,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">d</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
         		</li>
       		
 		</ul>
@@ -274,7 +299,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://co2.github.com/2020/05/17/hexo-set-up/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://co2.github.io/2020/05/17/hexo-set-up/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -416,7 +441,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">d</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
             
             <div class="clearfix"></div>
