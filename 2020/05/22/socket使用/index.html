@@ -8,18 +8,22 @@
   <link rel="dns-prefetch" href="https://distanceblog.github.io">
   <title>socket使用 | Co2</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="曾梦想仗剑走天涯,后来工作忙没去.">
+  <meta name="description" content="什么是 socket？socket 的原意是“插座”，在计算机通信领域，socket 被翻译为“套接字”，它是计算机之间进行通信的一种约定或一种方式。通过 socket 这种约定，一台计算机可以接收其他计算机的数据，也可以向其他计算机发送数据。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="socket使用">
 <meta property="og:url" content="https://distanceblog.github.io/2020/05/22/socket%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="Co2">
-<meta property="og:description" content="曾梦想仗剑走天涯,后来工作忙没去.">
+<meta property="og:description" content="什么是 socket？socket 的原意是“插座”，在计算机通信领域，socket 被翻译为“套接字”，它是计算机之间进行通信的一种约定或一种方式。通过 socket 这种约定，一台计算机可以接收其他计算机的数据，也可以向其他计算机发送数据。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://distanceblog.github.io/images/socket%E4%BA%A4%E4%BA%92.jpg">
+<meta property="og:image" content="https://distanceblog.github.io/images/socket-s-c.webp">
+<meta property="og:image" content="https://distanceblog.github.io/images/nginx%E6%9E%B6%E6%9E%84%E5%9B%BE.jpg">
 <meta property="article:published_time" content="2020-05-22T04:55:48.000Z">
-<meta property="article:modified_time" content="2020-05-22T04:58:52.639Z">
+<meta property="article:modified_time" content="2020-05-31T09:01:35.955Z">
 <meta property="article:author" content="二氧化碳">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://distanceblog.github.io/images/socket%E4%BA%A4%E4%BA%92.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Co2" type="application/atom+xml">
   
@@ -90,7 +94,7 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="https://github.com/DistanceBlog/distanceblog.github.com.git" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="https://github.com/DistanceBlog/distanceblog.github.io" title="github"><i class="icon-github"></i></a>
 		        
 			</div>
 		</nav>
@@ -133,7 +137,7 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="https://github.com/DistanceBlog/distanceblog.github.com.git" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="https://github.com/DistanceBlog/distanceblog.github.io" title="github"><i class="icon-github"></i></a>
 			        
 				</div>
 			</nav>
@@ -185,7 +189,39 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="什么是-socket？"><a href="#什么是-socket？" class="headerlink" title="什么是 socket？"></a>什么是 socket？</h3><pre><code>socket 的原意是“插座”，在计算机通信领域，socket 被翻译为“套接字”，它是计算机之间进行通信的一种约定或一种方式。通过 socket 这种约定，一台计算机可以接收其他计算机的数据，也可以向其他计算机发送数据。</code></pre><a id="more"></a>
+<h3 id="UNIX-Linux-中的-socket-是什么？"><a href="#UNIX-Linux-中的-socket-是什么？" class="headerlink" title="UNIX/Linux 中的 socket 是什么？"></a>UNIX/Linux 中的 socket 是什么？</h3><pre><code>在 UNIX/Linux 系统中，为了统一对各种硬件的操作，简化接口，不同的硬件设备也都被看成一个文件。对这些文件的操作，等同于对磁盘上普通文件的操作。
+UNIX/Linux 程序在执行任何形式的 I/O 操作时，都是在读取或者写入一个文件描述符。一个文件描述符只是一个和打开的文件相关联的整数，它的背后可能是一个硬盘上的普通文件、FIFO、管道、终端、键盘、显示器，甚至是一个网络连接。
+我们可以通过 socket() 函数来创建一个网络连接，或者说打开一个网络文件，socket() 的返回值就是文件描述符。有了文件描述符，我们就可以使用普通的文件操作函数来传输数据了，例如：
+  - 用 read() 读取从远程计算机传来的数据；
+  - 用 write() 向远程计算机写入数据
+只要用 socket() 创建了连接，剩下的就是文件操作了.</code></pre><h3 id="Window-系统中的-socket-是什么？"><a href="#Window-系统中的-socket-是什么？" class="headerlink" title="Window 系统中的 socket 是什么？"></a>Window 系统中的 socket 是什么？</h3><pre><code>Windows 也有类似“文件描述符”的概念，但通常被称为“文件句柄”。因此，本教程如果涉及 Windows 平台将使用“句柄”，如果涉及 Linux 平台则使用“描述符”。
+
+与 UNIX/Linux 不同的是，Windows 会区分 socket 和文件，Windows 就把 socket 当做一个网络连接来对待，因此需要调用专门针对 socket 而设计的数据传输函数，针对普通文件的输入输出函数就无效了。</code></pre><h3 id="socket信息与操作系统交互"><a href="#socket信息与操作系统交互" class="headerlink" title="socket信息与操作系统交互"></a>socket信息与操作系统交互</h3><p><img src="/images/socket%E4%BA%A4%E4%BA%92.jpg" alt=""></p>
+<h3 id="阻塞和非阻塞"><a href="#阻塞和非阻塞" class="headerlink" title="阻塞和非阻塞"></a>阻塞和非阻塞</h3><pre><code>阻塞与非阻塞是对一个文件描述符指定的文件或设备的两种工作方式。 阻塞的意思是指，当试图对该文件描述符进行读写时，如果当时没有东西可读或者暂时不可写，程序就进入等待状态，直到有东西可读或者可写为止。 非阻塞的意思是，当没有东西可读或者不可写时，读写函数就马上返回，而不会等待。</code></pre><h3 id="socket使用"><a href="#socket使用" class="headerlink" title="socket使用"></a>socket使用</h3><p><img src="/images/socket-s-c.webp" alt=""></p>
+<h5 id="server-py"><a href="#server-py" class="headerlink" title="server.py"></a>server.py</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;usr&#x2F;bin&#x2F;env python3</span><br><span class="line"></span><br><span class="line">import socket</span><br><span class="line"></span><br><span class="line">HOST &#x3D; &#39;127.0.0.1&#39;  # 标准的回环地址 (localhost)</span><br><span class="line">PORT &#x3D; 65432        # 监听的端口 (非系统级的端口: 大于 1023)</span><br><span class="line"></span><br><span class="line">with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:</span><br><span class="line">    s.bind((HOST, PORT))</span><br><span class="line">    s.listen()</span><br><span class="line">    conn, addr &#x3D; s.accept()</span><br><span class="line">    with conn:</span><br><span class="line">        print(&#39;Connected by&#39;, addr)</span><br><span class="line">        while True:</span><br><span class="line">            data &#x3D; conn.recv(1024)</span><br><span class="line">            if not data:</span><br><span class="line">                break</span><br><span class="line">            conn.sendall(data)</span><br></pre></td></tr></table></figure>
+<h5 id="client-py"><a href="#client-py" class="headerlink" title="client.py"></a>client.py</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;usr&#x2F;bin&#x2F;env python3</span><br><span class="line"></span><br><span class="line">import socket</span><br><span class="line"></span><br><span class="line">HOST &#x3D; &#39;127.0.0.1&#39;  # 服务器的主机名或者 IP 地址</span><br><span class="line">PORT &#x3D; 65432        # 服务器使用的端口</span><br><span class="line"></span><br><span class="line">with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:</span><br><span class="line">    s.connect((HOST, PORT))</span><br><span class="line">    s.sendall(b&#39;Hello, world&#39;)</span><br><span class="line">    data &#x3D; s.recv(1024)</span><br><span class="line"></span><br><span class="line">print(&#39;Received&#39;, repr(data))</span><br></pre></td></tr></table></figure>
+<h3 id="seleck-poll-epoll"><a href="#seleck-poll-epoll" class="headerlink" title="seleck, poll, epoll"></a>seleck, poll, epoll</h3><h4 id="select"><a href="#select" class="headerlink" title="select"></a>select</h4><pre><code>select最早于1983年出现在4.2BSD中，它通过一个select()系统调用来监视多个文件描述符的数组，当select()返回后，该数组中就绪的文件描述符便会被内核修改标志位，使得进程可以获得这些文件描述符从而进行后续的读写操作。
+
+select目前几乎在所有的平台上支持，其良好跨平台支持也是它的一个优点，事实上从现在看来，这也是它所剩不多的优点之一。
+
+select的一个缺点在于单个进程能够监视的文件描述符的数量存在最大限制，在Linux上一般为1024，不过可以通过修改宏定义甚至重新编译内核的方式提升这一限制。
+
+另外，select()所维护的存储大量文件描述符的数据结构，随着文件描述符数量的增大，其复制的开销也线性增长。同时，由于网络响应时间的延迟使得大量TCP连接处于非活跃状态，但调用select()会对所有socket进行一次线性扫描，所以这也浪费了一定的开销。</code></pre><h4 id="poll"><a href="#poll" class="headerlink" title="poll"></a>poll</h4><pre><code>poll在1986年诞生于System V Release 3，它和select在本质上没有多大差别，但是poll没有最大文件描述符数量的限制。
+
+poll和select同样存在一个缺点就是，包含大量文件描述符的数组被整体复制于用户态和内核的地址空间之间，而不论这些文件描述符是否就绪，它的开销随着文件描述符数量的增加而线性增大。
+
+另外，select()和poll()将就绪的文件描述符告诉进程后，如果进程没有对其进行IO操作，那么下次调用select()和poll()的时候将再次报告这些文件描述符，所以它们一般不会丢失就绪的消息，这种方式称为水平触发（Level Triggered）。</code></pre><h4 id="epoll"><a href="#epoll" class="headerlink" title="epoll"></a>epoll</h4><pre><code>直到Linux2.6才出现了由内核直接支持的实现方法，那就是epoll，它几乎具备了之前所说的一切优点，被公认为Linux2.6下性能最好的多路I/O就绪通知方法。
+
+epoll可以同时支持水平触发和边缘触发（Edge Triggered，只告诉进程哪些文件描述符刚刚变为就绪状态，它只说一遍，如果我们没有采取行动，那么它将不会再次告知，这种方式称为边缘触发），理论上边缘触发的性能要更高一些，但是代码实现相当复杂。
+
+epoll同样只告知那些就绪的文件描述符，而且当我们调用epoll_wait()获得就绪文件描述符时，返回的不是实际的描述符，而是一个代表就绪描述符数量的值，你只需要去epoll指定的一个数组中依次取得相应数量的文件描述符即可，这里也使用了内存映射（mmap）技术，这样便彻底省掉了这些文件描述符在系统调用时复制的开销。
+
+另一个本质的改进在于epoll采用基于事件的就绪通知方式。在select/poll中，进程只有在调用一定的方法后，内核才对所有监视的文件描述符进行扫描，而epoll事先通过epoll_ctl()来注册一个文件描述符，一旦基于某个文件描述符就绪时，内核会采用类似callback的回调机制，迅速激活这个文件描述符，当进程调用epoll_wait()时便得到通知。</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;usr&#x2F;bin&#x2F;env python</span><br><span class="line"></span><br><span class="line">import socket</span><br><span class="line">import select</span><br><span class="line">import Queue</span><br><span class="line"></span><br><span class="line">#创建socket对象</span><br><span class="line">serversocket &#x3D; socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">#设置IP地址复用</span><br><span class="line">serversocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)</span><br><span class="line">#ip地址和端口号</span><br><span class="line">server_address &#x3D; (&quot;127.0.0.1&quot;, 8888)</span><br><span class="line">#绑定IP地址</span><br><span class="line">serversocket.bind(server_address)</span><br><span class="line">#监听，并设置最大连接数</span><br><span class="line">serversocket.listen(10)</span><br><span class="line">print  &quot;服务器启动成功，监听IP：&quot; , server_address</span><br><span class="line">#服务端设置非阻塞</span><br><span class="line">serversocket.setblocking(False)  </span><br><span class="line">#超时时间</span><br><span class="line">timeout &#x3D; 10</span><br><span class="line">#创建epoll事件对象，后续要监控的事件添加到其中</span><br><span class="line">epoll &#x3D; select.epoll()</span><br><span class="line">#注册服务器监听fd到等待读事件集合</span><br><span class="line">epoll.register(serversocket.fileno(), select.EPOLLIN)</span><br><span class="line">#保存连接客户端消息的字典，格式为&#123;&#125;</span><br><span class="line">message_queues &#x3D; &#123;&#125;</span><br><span class="line">#文件句柄到所对应对象的字典，格式为&#123;句柄：对象&#125;</span><br><span class="line">fd_to_socket &#x3D; &#123;serversocket.fileno():serversocket,&#125;</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">  print &quot;等待活动连接......&quot;</span><br><span class="line">  #轮询注册的事件集合，返回值为[(文件句柄，对应的事件)，(...),....]</span><br><span class="line">  events &#x3D; epoll.poll(timeout)</span><br><span class="line">  if not events:</span><br><span class="line">     print &quot;epoll超时无活动连接，重新轮询......&quot;</span><br><span class="line">     continue</span><br><span class="line">  print &quot;有&quot; , len(events), &quot;个新事件，开始处理......&quot;</span><br><span class="line"></span><br><span class="line">  for fd, event in events:</span><br><span class="line">     socket &#x3D; fd_to_socket[fd]</span><br><span class="line">     #如果活动socket为当前服务器socket，表示有新连接</span><br><span class="line">     if socket &#x3D;&#x3D; serversocket:</span><br><span class="line">            connection, address &#x3D; serversocket.accept()</span><br><span class="line">            print &quot;新连接：&quot; , address</span><br><span class="line">            #新连接socket设置为非阻塞</span><br><span class="line">            connection.setblocking(False)</span><br><span class="line">            #注册新连接fd到待读事件集合</span><br><span class="line">            epoll.register(connection.fileno(), select.EPOLLIN)</span><br><span class="line">            #把新连接的文件句柄以及对象保存到字典</span><br><span class="line">            fd_to_socket[connection.fileno()] &#x3D; connection</span><br><span class="line">            #以新连接的对象为键值，值存储在队列中，保存每个连接的信息</span><br><span class="line">            message_queues[connection]  &#x3D; Queue.Queue()</span><br><span class="line">     #关闭事件</span><br><span class="line">     elif event &amp; select.EPOLLHUP:</span><br><span class="line">        print(&#39;client close&#39;)</span><br><span class="line">        #在epoll中注销客户端的文件句柄</span><br><span class="line">        epoll.unregister(fd)</span><br><span class="line">        #关闭客户端的文件句柄</span><br><span class="line">        fd_to_socket[fd].close()</span><br><span class="line">        #在字典中删除与已关闭客户端相关的信息</span><br><span class="line">        del fd_to_socket[fd]</span><br><span class="line">     #可读事件</span><br><span class="line">     elif event &amp; select.EPOLLIN:</span><br><span class="line">        #接收数据</span><br><span class="line">        data &#x3D; socket.recv(1024)</span><br><span class="line">        if data:</span><br><span class="line">           print(&quot;收到数据：&quot; , data , &quot;客户端：&quot; , socket.getpeername())</span><br><span class="line">           #将数据放入对应客户端的字典</span><br><span class="line">           message_queues[socket].put(data)</span><br><span class="line">           #修改读取到消息的连接到等待写事件集合(即对应客户端收到消息后，再将其fd修改并加入写事件集合)</span><br><span class="line">           epoll.modify(fd, select.EPOLLOUT)</span><br><span class="line">     #可写事件</span><br><span class="line">     elif event &amp; select.EPOLLOUT:</span><br><span class="line">        try:</span><br><span class="line">           #从字典中获取对应客户端的信息</span><br><span class="line">           msg &#x3D; message_queues[socket].get_nowait()</span><br><span class="line">        except Queue.Empty:</span><br><span class="line">           print(socket.getpeername() , &quot; queue empty&quot;)</span><br><span class="line">           #修改文件句柄为读事件</span><br><span class="line">           epoll.modify(fd, select.EPOLLIN)</span><br><span class="line">        else :</span><br><span class="line">           print(&quot;发送数据：&quot; , data , &quot;客户端：&quot; , socket.getpeername())</span><br><span class="line">           #发送数据</span><br><span class="line">           socket.send(msg)</span><br><span class="line"></span><br><span class="line">#在epoll中注销服务端文件句柄</span><br><span class="line">epoll.unregister(serversocket.fileno())</span><br><span class="line">#关闭epoll</span><br><span class="line">epoll.close()</span><br><span class="line">#关闭服务器socket</span><br><span class="line">serversocket.close()</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h3><p><img src="/images/nginx%E6%9E%B6%E6%9E%84%E5%9B%BE.jpg" alt="nginx架构图"><br>  epoll本质上还是阻塞,只不过是通过信号挂起恢复来实现了端口复用.如果想自定义实现nginx架构图<br>  方案一: 基于python的源库socketserver,用多进程(worker)/多线程+阻塞(epoll注册复用端口), 使用完成后关闭该连接和销毁本线程.<br>  方案二: 基于python的源库socket,使用多进程+该进程下单线程+非阻塞(socket), 使用完成后关闭改连接</p>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="http://c.biancheng.net/view/2123.html" target="_blank" rel="noopener">socket是什么？套接字是什么？</a><br><a href="https://www.cnblogs.com/coser/archive/2012/01/06/2315216.html" target="_blank" rel="noopener">Python网络编程中的select 和 poll I/O复用的简单使用</a><br><a href="https://keelii.com/2018/09/24/socket-programming-in-python/" target="_blank" rel="noopener">Python socket编程</a><br><a href="http://blog.csdn.net/mango_song/article/details/42643971" target="_blank" rel="noopener">我读过最好的Epoll模型讲解</a><br><a href="https://zhuanlan.zhihu.com/p/99669985" target="_blank" rel="noopener">Flask如何实现非阻塞并发的</a></p>
+
       
 
       
@@ -279,6 +315,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2020/05/31/mysql%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          mysql常用操作
+        
+      </div>
+    </a>
+  
   
     <a href="/2020/05/18/%E9%80%8D%E9%81%A5%E6%B8%B8/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">逍遥游</div>
@@ -314,6 +359,22 @@
 
   
 
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "https://distanceblog.github.io/2020/05/22/socket%E4%BD%BF%E7%94%A8/",
+  owner: 'taoharry',
+  repo: 'distanceblog.github.io.git',
+  oauth: {
+    client_id: '086ff3a7048cb89f645d',
+    client_secret: '34abbb6b3b82c58494f70c81d9b4c4b0705e9144',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -415,6 +476,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
@@ -424,6 +489,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
               </li>
             
             <div class="clearfix"></div>
